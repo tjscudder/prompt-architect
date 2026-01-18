@@ -3,38 +3,70 @@
                               README & Guide
 ================================================================================
 
-OVERVIEW
---------
-Prompt Architect is an interactive 13-step wizard that guides you through 
+1. OVERVIEW
+-----------
+Prompt Architect is an interactive 14-step wizard that guides you through 
 creating optimized, production-ready prompts for large language models (LLMs).
 
 Instead of writing prompts from scratch, this skill interviews you about your 
 goals, constraints, and requirements, then assembles a well-structured prompt 
-tailored to your target LLM.
+tailored to your target LLM using research-validated techniques.
 
-WHAT IT DOES
-------------
+TABLE OF CONTENTS
+-----------------
+  1.  Overview
+  2.  What It Does
+  3.  What It Outputs
+  4.  Installation: Claude.AI
+  5.  Triggering the Skill
+  6.  How to Use the Skill
+  7.  Using with Non-Claude LLMs
+  8.  Troubleshooting
+  9.  File Structure
+  10. Research Basis
+  11. Version History
+  12. Contact & Support
+
+================================================================================
+
+2. WHAT IT DOES
+---------------
 The skill walks you through these steps:
 
-  1. Use-Case & Goal Overview     - What you're trying to accomplish
-  2. Role Definition              - Who/what the model should act as
-  3. Task Definition              - Primary and secondary tasks
-  4. Inputs & Context             - What data the model receives
-  5. Constraints & Guardrails     - Rules, limits, and "don'ts"
-  6. Output Format & Structure    - How the answer should be shaped
-  7. Style & Tone                 - Voice and reading level
-  8. Examples (Few-Shot)          - Show, don't tell demonstrations
-  9. Quality Checks               - Self-verification instructions
-  10. Target LLM Identification   - Which model will run your prompt
-  11. Format Assessment           - Recommends optimal prompt structure
-  12. First Draft Assembly        - Combines everything in chosen format
-  13. Self-Review & Improvement   - Refines and delivers final prompt
+  1. Use-Case & Goal Overview        - What you're trying to accomplish
+  2. Task Definition                 - Primary and secondary tasks
+  3. Task Classification             - Categorize task type and complexity
+  4. Inputs & Context                - What data the model receives
+  5. Constraints & Guardrails        - Rules, limits, and boundaries (max 7-10)
+  6. Output Format & Structure       - How the answer should be shaped
+  7. Target LLM Identification       - Which model will run your prompt
+  8. Format Assessment               - Recommends optimal prompt structure
+  9. Examples (Few-Shot)             - Show, don't tell demonstrations (2-5)
+  10. Role/Persona (Optional)        - Who/what the model should act as
+  11. Style & Tone (Optional)        - Voice and reading level
+  12. Quality Checks                 - Self-verification instructions
+  13. First Draft Assembly           - Combines everything in optimal order
+  14. Self-Review & Improvement      - Refines and delivers final prompt
 
 At each step, the skill asks questions, rewrites your answers into optimized 
 prompt text, explains its reasoning, and asks for your approval before moving on.
 
-WHAT IT OUTPUTS
----------------
+EXPEDITE MODE
+~~~~~~~~~~~~~
+The skill supports three speed modes to match your preferred pace:
+
+  • Expedite: full      - AI drafts all responses; you review and approve
+  • Expedite: assisted  - AI offers suggestions; you decide what to use (default)
+  • Expedite: off       - You answer all questions directly
+
+Commands available at any step:
+  • "Suggest all"       - Draft responses for all questions
+  • "Suggest 1, 3"      - Draft responses for specific questions
+  • "Approve"           - Accept all suggestions
+  • "1. [response]"     - Provide/edit response for question 1
+
+3. WHAT IT OUTPUTS
+------------------
 Based on your task type and target LLM, the skill recommends and outputs your 
 final prompt in one of these formats:
 
@@ -51,8 +83,8 @@ The final deliverable includes:
 
 ================================================================================
 
-INSTALLATION: CLAUDE.AI
------------------------
+4. INSTALLATION: CLAUDE.AI
+--------------------------
 
 OPTION 1: Global Installation (All Chats)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,8 +134,8 @@ If file upload isn't working, you can add the skill manually:
    - Settings > Capabilities (for global access), or
    - Project Knowledge (for project-specific access)
 
-TRIGGERING THE SKILL
---------------------
+5. TRIGGERING THE SKILL
+-----------------------
 Start a new conversation in your Project and use one of these triggers:
 
   • "@createprompt"
@@ -112,12 +144,12 @@ Start a new conversation in your Project and use one of these triggers:
   • "Design a system prompt"
   • "Improve this prompt"
 
-Claude will recognize the skill and begin the 13-step wizard.
+Claude will recognize the skill and begin the 14-step wizard.
 
 ================================================================================
 
-HOW TO USE THE SKILL
---------------------
+6. HOW TO USE THE SKILL
+-----------------------
 
 STARTING A SESSION
   Simply describe what you need, for example:
@@ -139,7 +171,7 @@ DURING THE INTERVIEW
   • "APPROVE" (or just "yes", "looks good", etc.) to accept and continue
   • "EDIT: [your changes]" to modify before proceeding
 
-FORMAT SELECTION (Step 11)
+FORMAT SELECTION (Step 8)
   When asked about format, you can:
   
   1. Accept the PRIMARY recommendation
@@ -149,7 +181,7 @@ FORMAT SELECTION (Step 11)
   The skill explains why each format works best for your use case.
 
 REVIEWING THE DRAFT
-  In Steps 12-13, review the assembled prompt. You can:
+  In Steps 13-14, review the assembled prompt. You can:
   
   • Request changes to specific sections
   • Ask to tighten or expand certain areas
@@ -165,16 +197,16 @@ TIPS FOR BEST RESULTS
 
 ================================================================================
 
-USING WITH NON-CLAUDE LLMs
---------------------------
+7. USING WITH NON-CLAUDE LLMs
+-----------------------------
 
 The Prompt Architect skill itself runs inside Claude, but the prompts it 
 creates are designed for ANY modern LLM. Here's how to use your generated 
 prompts with other models:
 
 STEP 1: CREATE YOUR PROMPT IN CLAUDE
-  Run through the full 13-step wizard in Claude. When asked about your target 
-  LLM (Step 10), select the model you'll actually use:
+  Run through the full 14-step wizard in Claude. When asked about your target 
+  LLM (Step 7), select the model you'll actually use:
   
     1. Claude (Anthropic)
     2. GPT-4 / GPT-4o (OpenAI)
@@ -241,8 +273,8 @@ Framework Agnostic
 
 ================================================================================
 
-TROUBLESHOOTING
----------------
+8. TROUBLESHOOTING
+------------------
 
 "The skill isn't activating"
   Make sure the skill file is properly added to your Project Knowledge. Try 
@@ -261,8 +293,8 @@ TROUBLESHOOTING
 
 ================================================================================
 
-FILE STRUCTURE
---------------
+9. FILE STRUCTURE
+-----------------
 
 prompt-architect.skill    <- ZIP archive containing the skill
   └── prompt-architect/
@@ -275,8 +307,69 @@ To inspect or modify the skill:
 
 ================================================================================
 
-VERSION HISTORY
----------------
+10. RESEARCH BASIS
+------------------
+
+This skill is built on a comprehensive synthesis of 150+ research sources on 
+optimal prompt engineering. The research-backed approach delivers measurable 
+improvements over intuition-based prompting.
+
+KEY RESEARCH FINDINGS INCORPORATED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Format Selection Impact:
+  • Format choice can impact performance by up to 40% on specific tasks
+  • XML achieves 23% higher accuracy than JSON for reasoning tasks
+  • Markdown outperforms structured formats by 18% for creative tasks
+  • YAML provides 48% token savings vs JSON with comparable accuracy
+
+Component Ordering:
+  • Research validates specific ordering: examples → context → role → task → 
+    constraints → style → output format → quality checks
+  • This ordering aligns with LLM token prediction mechanisms
+  • Placing instructions last prevents models from "continuing" the prompt
+
+Optimal Prompt Length:
+  • Background knowledge inclusion improves F1-scores by 5-10%
+  • Short prompts (<50% baseline) universally degrade performance
+  • Staying below 80% context window capacity prevents degradation
+
+Constraints & Examples:
+  • Compliance degrades beyond 7-10 constraints (skill enforces this limit)
+  • 2-5 examples optimal; quality and ordering matter more than quantity
+  • Strongest example should be placed last in sequence
+
+Personas & Roles:
+  • Simple personas ("You are an expert") show negligible benefit
+  • Detailed, domain-specific personas work better when needed
+  • Role step is now optional based on this research
+
+BENEFITS OF RESEARCH-BASED PROMPTING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  • Eliminates guesswork with evidence-based format selection
+  • Optimizes for your specific task type and target LLM
+  • Applies proven component ordering for maximum effectiveness
+  • Enforces research-validated constraints and structure limits
+  • Reduces trial-and-error iteration time significantly
+
+For the complete research synthesis, see: prompt-engineering-research-synthesis.md
+
+================================================================================
+
+11. VERSION HISTORY
+-------------------
+v2.1 (January 2026)
+  - Expanded from 13 to 14 steps
+  - Added Task Classification & Complexity Assessment step (Step 3)
+  - Added Expedite Mode for faster iteration (full/assisted/off)
+  - Reordered steps: cognitive flow for gathering info, optimal flow for output
+  - Made Role (Step 10) and Style (Step 11) optional based on research
+  - Added research-validated constraint limits (7-10 max)
+  - Added context window best practices (stay below 80% capacity)
+  - Enhanced output ordering based on research (examples first, format last)
+  - Added RESEARCH BASIS section documenting evidence foundation
+
 v2.0 (January 2026)
   - Added Target LLM identification step
   - Added Format Assessment & Recommendation step
@@ -290,8 +383,8 @@ v1.0 (Original)
 
 ================================================================================
 
-CONTACT & SUPPORT
------------------
+12. CONTACT & SUPPORT
+---------------------
 For questions, improvements, or bug reports, refer to your organization's 
 documentation or the original skill author.
 
