@@ -5,7 +5,7 @@
 
 1. OVERVIEW
 -----------
-Prompt Architect is an interactive 14-step wizard that guides you through 
+Prompt Architect is an interactive 15-step wizard that guides you through 
 creating optimized, production-ready prompts for large language models (LLMs).
 
 Instead of writing prompts from scratch, this skill interviews you about your 
@@ -34,22 +34,25 @@ TABLE OF CONTENTS
 The skill walks you through these steps:
 
   1. Use-Case & Goal Overview        - What you're trying to accomplish
-  2. Task Definition                 - Primary and secondary tasks
-  3. Task Classification             - Categorize task type and complexity
-  4. Inputs & Context                - What data the model receives
-  5. Constraints & Guardrails        - Rules, limits, and boundaries (max 7-10)
-  6. Output Format & Structure       - How the answer should be shaped
-  7. Target LLM Identification       - Which model will run your prompt
-  8. Format Assessment               - Recommends optimal prompt structure
-  9. Examples (Few-Shot)             - Show, don't tell demonstrations (2-5)
-  10. Role/Persona (Optional)        - Who/what the model should act as
-  11. Style & Tone (Optional)        - Voice and reading level
-  12. Quality Checks                 - Self-verification instructions
-  13. First Draft Assembly           - Combines everything in optimal order
-  14. Self-Review & Improvement      - Refines and delivers final prompt
+  2. Expedite Mode Selection         - Choose your preferred pace (full/assisted/off)
+  3. Task Definition                 - Primary and secondary tasks
+  4. Task Classification             - Categorize task type and complexity
+  5. Inputs & Context                - What data the model receives
+  6. Constraints & Guardrails        - Rules, limits, and boundaries (max 7-10)
+  7. Output Format & Structure       - How the answer should be shaped
+  8. Target LLM Identification       - Which model will run your prompt
+  9. Format Assessment               - Auto-recommends optimal prompt structure
+  10. Examples (Few-Shot)            - Show, don't tell demonstrations (2-5)
+  11. Role/Persona (Optional)        - Who/what the model should act as
+  12. Style & Tone (Optional)        - Voice and reading level
+  13. Quality Checks                 - Self-verification instructions
+  14. First Draft Assembly           - Combines everything in optimal order
+  15. Self-Review & Improvement      - Refines and delivers final prompt
 
 At each step, the skill asks questions, rewrites your answers into optimized 
 prompt text, explains its reasoning, and asks for your approval before moving on.
+
+Note: Step 1 must be fully approved before the Expedite Mode (Step 2) is presented.
 
 EXPEDITE MODE
 ~~~~~~~~~~~~~
@@ -59,11 +62,24 @@ The skill supports three speed modes to match your preferred pace:
   • Expedite: assisted  - AI offers suggestions; you decide what to use (default)
   • Expedite: off       - You answer all questions directly
 
+You'll select your Expedite Mode in Step 2, after approving Step 1.
+
 Commands available at any step:
   • "Suggest all"       - Draft responses for all questions
   • "Suggest 1, 3"      - Draft responses for specific questions
   • "Approve"           - Accept all suggestions
   • "1. [response]"     - Provide/edit response for question 1
+
+INLINE SUGGEST (Mix answers with suggestions):
+  You can combine your own answers with Suggest requests in a single response:
+  
+  Example: "1. Customer support emails. 2. Suggest. 3. API integration. 4. Suggest"
+  
+  This tells the skill to:
+  - Accept your direct answers for questions 1 and 3
+  - Generate AI suggestions only for questions 2 and 4
+  
+  This is useful when you know some answers but want help with others.
 
 3. WHAT IT OUTPUTS
 ------------------
@@ -144,7 +160,7 @@ Start a new conversation in your Project and use one of these triggers:
   • "Design a system prompt"
   • "Improve this prompt"
 
-Claude will recognize the skill and begin the 14-step wizard.
+Claude will recognize the skill and begin the 15-step wizard.
 
 ================================================================================
 
@@ -171,17 +187,21 @@ DURING THE INTERVIEW
   • "APPROVE" (or just "yes", "looks good", etc.) to accept and continue
   • "EDIT: [your changes]" to modify before proceeding
 
-FORMAT SELECTION (Step 8)
-  When asked about format, you can:
+FORMAT SELECTION (Step 9)
+  The skill automatically recommends the optimal format based on your task type,
+  complexity, and target LLM. You'll see:
   
-  1. Accept the PRIMARY recommendation
-  2. Choose the ALTERNATIVE option
-  3. Specify a CUSTOM format (XML, JSON, YAML, Markdown, Plain Text, or other)
+  - The recommended format with reasoning
+  - Options to change if desired:
+    • "Approve" - Accept the recommendation
+    • "Use [format]" - Switch to XML, JSON, YAML, Markdown, or Plain Text
+    • "Why not [format]?" - Ask why another format wasn't recommended
+    • "Compare formats" - See alternatives compared
   
   The skill explains why each format works best for your use case.
 
 REVIEWING THE DRAFT
-  In Steps 13-14, review the assembled prompt. You can:
+  In Steps 14-15, review the assembled prompt. You can:
   
   • Request changes to specific sections
   • Ask to tighten or expand certain areas
@@ -205,8 +225,8 @@ creates are designed for ANY modern LLM. Here's how to use your generated
 prompts with other models:
 
 STEP 1: CREATE YOUR PROMPT IN CLAUDE
-  Run through the full 14-step wizard in Claude. When asked about your target 
-  LLM (Step 7), select the model you'll actually use:
+  Run through the full 15-step wizard in Claude. When asked about your target 
+  LLM (Step 8), select the model you'll actually use:
   
     1. Claude (Anthropic)
     2. GPT-4 / GPT-4o (OpenAI)
@@ -359,6 +379,15 @@ For the complete research synthesis, see: prompt-engineering-research-synthesis.
 
 11. VERSION HISTORY
 -------------------
+v2.2 (January 2026)
+  - Expanded from 14 to 15 steps
+  - Expedite Mode is now its own dedicated step (Step 2) after Step 1 approval
+  - Step 1 must be fully completed and approved before Expedite Mode selection
+  - Format Assessment (Step 9) now auto-recommends format based on prior inputs
+  - Added inline Suggest capability: mix direct answers with Suggest requests
+    (e.g., "1. [answer]. 2. Suggest. 3. [answer]. 4. Suggest")
+  - Improved format selection UX with "Use [format]" and "Why not?" options
+
 v2.1 (January 2026)
   - Expanded from 13 to 14 steps
   - Added Task Classification & Complexity Assessment step (Step 3)
