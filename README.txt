@@ -33,15 +33,15 @@ TABLE OF CONTENTS
 ---------------
 The skill walks you through these steps:
 
-  1. Use-Case & Goal Overview        - What you're trying to accomplish
+  1. Use-Case & Goal Overview        - What you're trying to accomplish + skill intent
   2. Expedite Mode Selection         - Choose your preferred pace (full/assisted/off)
-  3. Task Definition                 - Primary and secondary tasks
+  3. Task Definition                 - Primary/secondary tasks + skill name if applicable
   4. Task Classification             - Categorize task type and complexity
   5. Inputs & Context                - What data the model receives
   6. Constraints & Guardrails        - Rules, limits, and boundaries (max 7-10)
   7. Output Format & Structure       - How the answer should be shaped
   8. Target LLM Identification       - Which model will run your prompt
-  9. Format Assessment               - Auto-recommends optimal prompt structure
+  9. Format Assessment               - Auto-recommends format (Skill user-selectable)
   10. Examples (Few-Shot)            - Show, don't tell demonstrations (2-5)
   11. Role/Persona (Optional)        - Who/what the model should act as
   12. Style & Tone (Optional)        - Voice and reading level
@@ -91,11 +91,30 @@ final prompt in one of these formats:
   • YAML         - Token-efficient alternative to JSON
   • Markdown     - Best for creative writing and content generation
   • Plain Text   - Best for general Q&A and simple tasks
+  • Skill        - For creating reusable Claude skills (.skill files)
 
 The final deliverable includes:
   - Your complete prompt in the chosen format
   - Target LLM and format metadata
   - Usage notes specific to your chosen model
+
+SKILL OUTPUT FORMAT (NEW)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+The Skill format (.skill) packages your prompt as a reusable Claude skill that 
+can be installed and shared. Use this when you want to create:
+
+  • A reusable capability for Claude Projects
+  • A shareable skill file for others to install
+  • A system prompt that can be triggered by keywords
+
+Important notes about .skill format:
+  • Only compatible with Claude (target LLM is auto-set to Claude)
+  • User-selectable only—never auto-recommended by the wizard
+  • Structure complexity adapts to your task (simple/moderate/complex)
+
+Delivery depends on environment:
+  • With file system access (Claude Cowork): Creates actual .skill file
+  • Without file system access: Outputs SKILL.md content + packaging instructions
 
 ================================================================================
 
@@ -194,11 +213,15 @@ FORMAT SELECTION (Step 9)
   - The recommended format with reasoning
   - Options to change if desired:
     • "Approve" - Accept the recommendation
-    • "Use [format]" - Switch to XML, JSON, YAML, Markdown, or Plain Text
+    • "Use [format]" - Switch to XML, JSON, YAML, Markdown, Plain Text, or Skill
     • "Why not [format]?" - Ask why another format wasn't recommended
     • "Compare formats" - See alternatives compared
   
   The skill explains why each format works best for your use case.
+  
+  Note: The Skill format is user-selectable but never auto-recommended. If you
+  indicated skill intent in Step 1, you'll see a reminder that "Use Skill" is
+  available to output as a .skill file.
 
 REVIEWING THE DRAFT
   In Steps 14-15, review the assembled prompt. You can:
@@ -311,6 +334,21 @@ Framework Agnostic
   You can ask Claude to modify specific sections even after the final output. 
   Just say "Edit the constraints section to add..." or similar.
 
+"I want to create a .skill file but don't see the option"
+  The Skill format is user-selectable only. Either:
+  - Answer "yes" to the skill intent question in Step 1, OR
+  - Type "Use Skill" when prompted for format selection in Step 9
+  
+  Note: The skill will never auto-recommend .skill format.
+
+"How do I package my skill after getting the SKILL.md content?"
+  If Claude doesn't have file system access, you'll receive the SKILL.md 
+  content with packaging instructions:
+  1. Create a folder named after your skill (e.g., "my-skill")
+  2. Save the content as SKILL.md inside that folder
+  3. ZIP the folder and rename the extension from .zip to .skill
+  4. Upload to Claude Settings > Capabilities or Project Knowledge
+
 ================================================================================
 
 9. FILE STRUCTURE
@@ -379,6 +417,17 @@ For the complete research synthesis, see: prompt-engineering-research-synthesis.
 
 11. VERSION HISTORY
 -------------------
+v2.3 (January 2026)
+  - Added Skill (.skill) output format for creating reusable Claude skills
+  - Skill format is user-selectable only (never auto-recommended)
+  - Step 1 now captures "skill intent" to enable skill-related options
+  - Step 3 captures skill name (kebab-case) and description if applicable
+  - Step 4 determines skill structure complexity (simple/moderate/complex)
+  - Added skill-specific guidance to Steps 5, 10, 11, and 13
+  - Step 14 includes templates for simple, moderate, and complex skill structures
+  - Environment-aware delivery: actual .skill file (Cowork) or content + instructions
+  - Added skill-specific quality checks and review checklist items
+
 v2.2 (January 2026)
   - Expanded from 14 to 15 steps
   - Expedite Mode is now its own dedicated step (Step 2) after Step 1 approval
