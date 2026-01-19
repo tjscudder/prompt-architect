@@ -243,23 +243,101 @@ TIPS FOR BEST RESULTS
 7. USING WITH NON-CLAUDE LLMs
 -----------------------------
 
-The Prompt Architect skill itself runs inside Claude, but the prompts it 
-creates are designed for ANY modern LLM. Here's how to use your generated 
-prompts with other models:
+You have TWO options for using Prompt Architect with non-Claude LLMs:
+
+  OPTION A: Universal Edition (Direct Use)
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Use the standalone prompt-architect-universal.md file directly in ChatGPT, 
+  Gemini, Grok, or any other LLM—no Claude required.
+
+  OPTION B: Claude-Generated Prompts
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Use Claude with the .skill file to generate optimized prompts, then copy 
+  those prompts to your target LLM.
+
+--------------------------------------------------------------------------------
+
+OPTION A: UNIVERSAL EDITION (RECOMMENDED FOR NON-CLAUDE USERS)
+--------------------------------------------------------------
+
+The Universal Edition is a standalone Markdown file that turns any LLM into 
+a Prompt Architect wizard. It contains the full 15-step process optimized for 
+cross-model compatibility.
+
+File: prompt-architect-universal.md
+
+HOW TO USE:
+
+  1. DOWNLOAD THE FILE
+     Get prompt-architect-universal.md from this package.
+
+  2. COPY THE ENTIRE CONTENTS
+     Open the file and copy everything (it's ~900 lines).
+
+  3. PASTE INTO YOUR LLM
+     Paste as a system prompt or initial message in:
+     
+     • ChatGPT (chat.openai.com)
+       - Paste as first message, OR
+       - Use as Custom Instructions (Settings > Personalization)
+       - For API: Include in the system message
+     
+     • Gemini (gemini.google.com)
+       - Paste as first message to start the wizard
+       - For API: Include in the system instruction
+     
+     • Grok (x.com/i/grok or grok.x.ai)
+       - Paste as first message
+     
+     • Llama / Mistral / Open-Source Models
+       - Use as system prompt in your inference setup
+       - Works with Ollama, LM Studio, vLLM, etc.
+     
+     • Any other LLM
+       - Paste as first message or system prompt
+
+  4. ACTIVATE THE WIZARD
+     After pasting, start with one of these phrases:
+     
+     • "Help me create a prompt"
+     • "Build a prompt for [your use case]"
+     • "Design a system prompt"
+     • "Let's start"
+
+  5. FOLLOW THE 15 STEPS
+     The LLM will guide you through the same research-validated process as 
+     the Claude skill, with format recommendations tailored to your target LLM.
+
+UNIVERSAL EDITION FEATURES:
+  • Full 15-step interactive wizard
+  • Expedite Mode support (full/assisted/off)
+  • Model-agnostic format recommendations
+  • Research-validated techniques included
+  • Works with GPT-4, Gemini, Grok, Llama, Mistral, and more
+
+--------------------------------------------------------------------------------
+
+OPTION B: CLAUDE-GENERATED PROMPTS
+----------------------------------
+
+If you prefer to use Claude to create prompts for other LLMs, follow this 
+workflow:
 
 STEP 1: CREATE YOUR PROMPT IN CLAUDE
   Run through the full 15-step wizard in Claude. When asked about your target 
   LLM (Step 8), select the model you'll actually use:
   
-    1. Claude (Anthropic)
-    2. GPT-4 / GPT-4o (OpenAI)
-    3. GPT-3.5-turbo (OpenAI)
-    4. Gemini (Google)
-    5. DeepSeek (V3 or R1)
-    6. Llama (Meta)
-    7. O1 / Reasoning Models (OpenAI)
-    8. Other
-    9. Framework Agnostic (multi-model use)
+    1. GPT-4 / GPT-4o / GPT-4 Turbo (OpenAI)
+    2. GPT-3.5-turbo (OpenAI)
+    3. O1 / O1-mini / Reasoning Models (OpenAI)
+    4. Claude (Anthropic)
+    5. Gemini / Gemini Pro (Google)
+    6. Grok (xAI)
+    7. DeepSeek (V3 or R1)
+    8. Llama / Llama 3 (Meta)
+    9. Mistral / Mixtral
+    10. Other
+    11. Multiple models / Framework Agnostic
 
   The skill will tailor format recommendations to your chosen model.
 
@@ -271,15 +349,18 @@ STEP 3: USE IN YOUR TARGET LLM
   
   • OpenAI (ChatGPT/API): Paste as system prompt or user message
   • Google Gemini: Paste in the input field or API call
+  • Grok: Paste as system prompt or initial message
   • DeepSeek: Use in user prompt (R1 models prefer all context there)
   • Llama/Local models: Use as system prompt in your inference setup
   • API integrations: Include in your API request body
 
+--------------------------------------------------------------------------------
+
 MODEL-SPECIFIC NOTES
 --------------------
 
-GPT-4 / GPT-4o
-  • Robust across all formats
+GPT-4 / GPT-4o / GPT-4 Turbo
+  • Lowest format sensitivity—robust across all formats
   • Markdown works excellently for reasoning tasks
   • JSON mode available for strict structured output
 
@@ -288,28 +369,35 @@ GPT-3.5-turbo
   • Strongly prefer JSON for structured tasks
   • Explicit instructions matter more than with newer models
 
-O1 / Reasoning Models
+O1 / O1-mini / Reasoning Models
   • Do NOT include "think step by step" instructions
   • These models reason internally by default
   • Focus on clear problem specification, not reasoning guidance
 
-DeepSeek
-  • V3: Include "JSON" explicitly in prompt for JSON output
-  • R1: Put ALL context in user prompt (not system prompt)
-  • XML works well (trained on Claude-style outputs)
-
-Gemini
+Gemini / Gemini Pro
   • Works well with Markdown and structured formats
+  • Requires format consistency—avoid mixing formats
   • Good at following explicit format instructions
 
-Llama / Open-Source Models
-  • More sensitive to format variations
+Grok
+  • Similar characteristics to GPT-4
+  • Markdown works well for most tasks
+  • Test with your specific use case for best results
+
+DeepSeek
+  • V3: Include "JSON" explicitly in prompt for JSON output
+  • R1: CRITICAL—put ALL context in user prompt (not system prompt)
+  • XML works well (trained on Claude-style outputs)
+
+Llama / Llama 3 / Mistral / Mixtral
+  • More sensitive to format variations than frontier models
+  • Markdown recommended for most tasks
   • Test your prompt before production use
   • Explicit, detailed instructions help more than format choice
 
-Framework Agnostic
-  If you'll use the prompt across multiple models, the skill recommends 
-  universally robust formats:
+Framework Agnostic (Multi-Model Use)
+  If you'll use the prompt across multiple models, use universally robust 
+  formats:
   • Markdown for creative/content tasks
   • JSON for extraction/structured output
   • Plain text with explicit instructions for Q&A
@@ -354,14 +442,26 @@ Framework Agnostic
 9. FILE STRUCTURE
 -----------------
 
-prompt-architect.skill    <- ZIP archive containing the skill
+prompt-architect.skill              <- ZIP archive containing the Claude skill
   └── prompt-architect/
-      └── SKILL.md        <- The actual skill definition
+      └── SKILL.md                  <- The Claude skill definition
 
-To inspect or modify the skill:
+prompt-architect-universal.md       <- Standalone version for non-Claude LLMs
+                                       (ChatGPT, Gemini, Grok, Llama, etc.)
+
+prompt-engineering-research-synthesis.md  <- Research basis documentation
+
+README.txt                          <- This file
+
+To inspect or modify the Claude skill:
   1. Rename .skill to .zip (or just unzip directly)
   2. Edit SKILL.md as needed
   3. Re-zip the folder and rename back to .skill
+
+To use the Universal Edition:
+  1. Open prompt-architect-universal.md
+  2. Copy the entire contents
+  3. Paste into your preferred LLM as system prompt or first message
 
 ================================================================================
 
