@@ -5,7 +5,7 @@
 
 1. OVERVIEW
 -----------
-Prompt Architect is an interactive 15-step wizard that guides you through 
+Prompt Architect is an interactive 9-step wizard that guides you through 
 creating optimized, production-ready prompts for large language models (LLMs).
 
 Instead of writing prompts from scratch, this skill interviews you about your 
@@ -33,42 +33,34 @@ TABLE OF CONTENTS
 ---------------
 The skill walks you through these steps:
 
-  1. Use-Case & Goal Overview        - What you're trying to accomplish + skill intent
-  2. Expedite Mode Selection         - Choose your preferred pace (full/assisted/off)
-  3. Task Definition                 - Primary/secondary tasks + skill name if applicable
-  4. Task Classification             - Categorize task type and complexity
-  5. Inputs & Context                - What data the model receives
-  6. Constraints & Guardrails        - Rules, limits, and boundaries (max 7-10)
-  7. Output Format & Structure       - How the answer should be shaped
-  8. Target LLM Identification       - Which model will run your prompt
-  9. Format Assessment               - Auto-recommends format (Skill user-selectable)
-  10. Examples (Few-Shot)            - Show, don't tell demonstrations (2-5)
-  11. Role/Persona (Optional)        - Who/what the model should act as
-  12. Style & Tone (Optional)        - Voice and reading level
-  13. Quality Checks                 - Self-verification instructions
-  14. First Draft Assembly           - Combines everything in optimal order
-  15. Self-Review & Improvement      - Refines and delivers final prompt
+  1. Use-Case, Goal & Mode         - What you're trying to accomplish + expedite preference
+  2. Task Definition & Classification - Primary/secondary tasks + task category/complexity
+  3. Inputs & Context              - What data the model receives
+  4. Constraints & Guardrails      - Rules, limits, and boundaries (max 7-10)
+  5. Output Format & LLM Selection - How the answer should be shaped + target LLM
+  6. Examples (Few-Shot)           - Show, don't tell demonstrations (2-5)
+  7. Voice (Role & Style)          - Who/what the model should act as (optional)
+  8. Quality Checks                - Self-verification instructions
+  9. Assembly & Review             - Combines everything and delivers final prompt
 
 At each step, the skill asks questions, rewrites your answers into optimized 
 prompt text, explains its reasoning, and asks for your approval before moving on.
 
-Note: Step 1 must be fully approved before the Expedite Mode (Step 2) is presented.
-
 EXPEDITE MODE
 ~~~~~~~~~~~~~
-The skill supports three speed modes to match your preferred pace:
+The skill supports two speed modes to match your preferred pace:
 
-  • Expedite: full      - AI drafts all responses; you review and approve
-  • Expedite: assisted  - AI offers suggestions; you decide what to use (default)
-  • Expedite: off       - You answer all questions directly
+  * Expedite: full      - AI drafts all responses; you review and approve
+  * Expedite: assisted  - AI offers suggestions; you decide what to use (default)
 
-You'll select your Expedite Mode in Step 2, after approving Step 1.
+You'll select your Expedite Mode in Step 1.
 
 Commands available at any step:
-  • "Suggest all"       - Draft responses for all questions
-  • "Suggest 1, 3"      - Draft responses for specific questions
-  • "Approve"           - Accept all suggestions
-  • "1. [response]"     - Provide/edit response for question 1
+  * "Suggest all"       - Draft responses for all questions
+  * "Suggest 1, 3"      - Draft responses for specific questions
+  * "Approve"           - Accept all suggestions
+  * "1. [response]"     - Provide/edit response for question 1
+  * "Revise 2: [feedback]" - Ask AI to revise a specific suggestion
 
 INLINE SUGGEST (Mix answers with suggestions):
   You can combine your own answers with Suggest requests in a single response:
@@ -86,35 +78,35 @@ INLINE SUGGEST (Mix answers with suggestions):
 Based on your task type and target LLM, the skill recommends and outputs your 
 final prompt in one of these formats:
 
-  • XML          - Best for complex reasoning tasks (especially with Claude)
-  • JSON         - Best for data extraction and structured output
-  • YAML         - Token-efficient alternative to JSON
-  • Markdown     - Best for creative writing and content generation
-  • Plain Text   - Best for general Q&A and simple tasks
-  • Skill        - For creating reusable Claude skills (.skill files)
+  * XML          - Best for complex reasoning tasks (especially with Claude)
+  * JSON         - Best for data extraction and structured output
+  * YAML         - Token-efficient alternative to JSON
+  * Markdown     - Best for creative writing and content generation
+  * Plain Text   - Best for general Q&A and simple tasks
+  * Skill        - For creating reusable Claude skills (.skill files)
 
 The final deliverable includes:
   - Your complete prompt in the chosen format
   - Target LLM and format metadata
   - Usage notes specific to your chosen model
 
-SKILL OUTPUT FORMAT (NEW)
-~~~~~~~~~~~~~~~~~~~~~~~~~
+SKILL OUTPUT FORMAT
+~~~~~~~~~~~~~~~~~~~
 The Skill format (.skill) packages your prompt as a reusable Claude skill that 
 can be installed and shared. Use this when you want to create:
 
-  • A reusable capability for Claude Projects
-  • A shareable skill file for others to install
-  • A system prompt that can be triggered by keywords
+  * A reusable capability for Claude Projects
+  * A shareable skill file for others to install
+  * A system prompt that can be triggered by keywords
 
 Important notes about .skill format:
-  • Only compatible with Claude (target LLM is auto-set to Claude)
-  • User-selectable only—never auto-recommended by the wizard
-  • Structure complexity adapts to your task (simple/moderate/complex)
+  * Only compatible with Claude (target LLM is auto-set to Claude)
+  * User-selectable only--never auto-recommended by the wizard
+  * Structure complexity adapts to your task (simple/moderate/complex)
 
 Delivery depends on environment:
-  • With file system access (Claude Cowork): Creates actual .skill file
-  • Without file system access: Outputs SKILL.md content + packaging instructions
+  * With file system access (Claude Cowork): Creates actual .skill file
+  * Without file system access: Outputs SKILL.md content + packaging instructions
 
 ================================================================================
 
@@ -159,7 +151,7 @@ OPTION 3: Manual Installation (Copy/Paste)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If file upload isn't working, you can add the skill manually:
 
-1. Unzip the .skill file (it's a ZIP archive—rename to .zip if needed)
+1. Unzip the .skill file (it's a ZIP archive--rename to .zip if needed)
 
 2. Open the extracted prompt-architect/SKILL.md file
 
@@ -173,13 +165,13 @@ If file upload isn't working, you can add the skill manually:
 -----------------------
 Start a new conversation in your Project and use one of these triggers:
 
-  • "@createprompt"
-  • "Help me create a prompt"
-  • "Build a prompt for [your use case]"
-  • "Design a system prompt"
-  • "Improve this prompt"
+  * "@createprompt"
+  * "Help me create a prompt"
+  * "Build a prompt for [your use case]"
+  * "Design a system prompt"
+  * "Improve this prompt"
 
-Claude will recognize the skill and begin the 15-step wizard.
+Claude will recognize the skill and begin the 9-step wizard.
 
 ================================================================================
 
@@ -203,19 +195,19 @@ DURING THE INTERVIEW
   4. Show you the result and ask for approval
   
   Respond with:
-  • "APPROVE" (or just "yes", "looks good", etc.) to accept and continue
-  • "EDIT: [your changes]" to modify before proceeding
+  * "APPROVE" (or just "yes", "looks good", etc.) to accept and continue
+  * "EDIT: [your changes]" to modify before proceeding
 
-FORMAT SELECTION (Step 9)
+FORMAT SELECTION (Step 5)
   The skill automatically recommends the optimal format based on your task type,
   complexity, and target LLM. You'll see:
   
   - The recommended format with reasoning
   - Options to change if desired:
-    • "Approve" - Accept the recommendation
-    • "Use [format]" - Switch to XML, JSON, YAML, Markdown, Plain Text, or Skill
-    • "Why not [format]?" - Ask why another format wasn't recommended
-    • "Compare formats" - See alternatives compared
+    * "Approve" - Accept the recommendation
+    * "Use [format]" - Switch to XML, JSON, YAML, Markdown, Plain Text, or Skill
+    * "Why not [format]?" - Ask why another format wasn't recommended
+    * "Compare formats" - See alternatives compared
   
   The skill explains why each format works best for your use case.
   
@@ -224,19 +216,19 @@ FORMAT SELECTION (Step 9)
   available to output as a .skill file.
 
 REVIEWING THE DRAFT
-  In Steps 14-15, review the assembled prompt. You can:
+  In Step 9, review the assembled prompt. You can:
   
-  • Request changes to specific sections
-  • Ask to tighten or expand certain areas
-  • Adjust the structure or ordering
+  * Request changes to specific sections
+  * Ask to tighten or expand certain areas
+  * Adjust the structure or ordering
   
   Only approve when you're satisfied with the result.
 
 TIPS FOR BEST RESULTS
-  • Be specific about your use case and constraints
-  • Provide example inputs/outputs if you have them
-  • Mention if you have strict requirements (parsing, compliance, etc.)
-  • Don't skip the format recommendation step—it matters for performance
+  * Be specific about your use case and constraints
+  * Provide example inputs/outputs if you have them
+  * Mention if you have strict requirements (parsing, compliance, etc.)
+  * Don't skip the format recommendation step--it matters for performance
 
 ================================================================================
 
@@ -248,7 +240,7 @@ You have TWO options for using Prompt Architect with non-Claude LLMs:
   OPTION A: Universal Edition (Direct Use)
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Use the standalone prompt-architect-universal.md file directly in ChatGPT, 
-  Gemini, Grok, or any other LLM—no Claude required.
+  Gemini, Grok, or any other LLM--no Claude required.
 
   OPTION B: Claude-Generated Prompts
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -261,7 +253,7 @@ OPTION A: UNIVERSAL EDITION (RECOMMENDED FOR NON-CLAUDE USERS)
 --------------------------------------------------------------
 
 The Universal Edition is a standalone Markdown file that turns any LLM into 
-a Prompt Architect wizard. It contains the full 15-step process optimized for 
+a Prompt Architect wizard. It contains the full 9-step process optimized for 
 cross-model compatibility.
 
 File: prompt-architect-universal.md
@@ -272,48 +264,48 @@ HOW TO USE:
      Get prompt-architect-universal.md from this package.
 
   2. COPY THE ENTIRE CONTENTS
-     Open the file and copy everything (it's ~900 lines).
+     Open the file and copy everything.
 
   3. PASTE INTO YOUR LLM
      Paste as a system prompt or initial message in:
      
-     • ChatGPT (chat.openai.com)
+     * ChatGPT (chat.openai.com)
        - Paste as first message, OR
        - Use as Custom Instructions (Settings > Personalization)
        - For API: Include in the system message
      
-     • Gemini (gemini.google.com)
+     * Gemini (gemini.google.com)
        - Paste as first message to start the wizard
        - For API: Include in the system instruction
      
-     • Grok (x.com/i/grok or grok.x.ai)
+     * Grok (x.com/i/grok or grok.x.ai)
        - Paste as first message
      
-     • Llama / Mistral / Open-Source Models
+     * Llama / Mistral / Open-Source Models
        - Use as system prompt in your inference setup
        - Works with Ollama, LM Studio, vLLM, etc.
      
-     • Any other LLM
+     * Any other LLM
        - Paste as first message or system prompt
 
   4. ACTIVATE THE WIZARD
      After pasting, start with one of these phrases:
      
-     • "Help me create a prompt"
-     • "Build a prompt for [your use case]"
-     • "Design a system prompt"
-     • "Let's start"
+     * "Help me create a prompt"
+     * "Build a prompt for [your use case]"
+     * "Design a system prompt"
+     * "Let's start"
 
-  5. FOLLOW THE 15 STEPS
+  5. FOLLOW THE 9 STEPS
      The LLM will guide you through the same research-validated process as 
      the Claude skill, with format recommendations tailored to your target LLM.
 
 UNIVERSAL EDITION FEATURES:
-  • Full 15-step interactive wizard
-  • Expedite Mode support (full/assisted/off)
-  • Model-agnostic format recommendations
-  • Research-validated techniques included
-  • Works with GPT-4, Gemini, Grok, Llama, Mistral, and more
+  * Full 9-step interactive wizard
+  * Expedite Mode support (full/assisted)
+  * Model-agnostic format recommendations
+  * Research-validated techniques included
+  * Works with GPT-4, Gemini, Grok, Llama, Mistral, and more
 
 --------------------------------------------------------------------------------
 
@@ -324,20 +316,18 @@ If you prefer to use Claude to create prompts for other LLMs, follow this
 workflow:
 
 STEP 1: CREATE YOUR PROMPT IN CLAUDE
-  Run through the full 15-step wizard in Claude. When asked about your target 
-  LLM (Step 8), select the model you'll actually use:
+  Run through the full 9-step wizard in Claude. When asked about your target 
+  LLM (Step 5), select the model you'll actually use:
   
-    1. GPT-4 / GPT-4o / GPT-4 Turbo (OpenAI)
-    2. GPT-3.5-turbo (OpenAI)
-    3. O1 / O1-mini / Reasoning Models (OpenAI)
-    4. Claude (Anthropic)
-    5. Gemini / Gemini Pro (Google)
-    6. Grok (xAI)
-    7. DeepSeek (V3 or R1)
-    8. Llama / Llama 3 (Meta)
-    9. Mistral / Mixtral
-    10. Other
-    11. Multiple models / Framework Agnostic
+    1. Claude (Anthropic)
+    2. GPT-4 / GPT-4o (OpenAI)
+    3. GPT-3.5-turbo (OpenAI)
+    4. Gemini (Google)
+    5. DeepSeek (V3 or R1)
+    6. Llama (Meta)
+    7. O1 / Reasoning Models (OpenAI)
+    8. Other (please specify)
+    9. Framework Agnostic (works across multiple models)
 
   The skill will tailor format recommendations to your chosen model.
 
@@ -347,12 +337,12 @@ STEP 2: COPY YOUR FINAL PROMPT
 STEP 3: USE IN YOUR TARGET LLM
   Paste the prompt into your target platform:
   
-  • OpenAI (ChatGPT/API): Paste as system prompt or user message
-  • Google Gemini: Paste in the input field or API call
-  • Grok: Paste as system prompt or initial message
-  • DeepSeek: Use in user prompt (R1 models prefer all context there)
-  • Llama/Local models: Use as system prompt in your inference setup
-  • API integrations: Include in your API request body
+  * OpenAI (ChatGPT/API): Paste as system prompt or user message
+  * Google Gemini: Paste in the input field or API call
+  * Grok: Paste as system prompt or initial message
+  * DeepSeek: Use in user prompt (R1 models prefer all context there)
+  * Llama/Local models: Use as system prompt in your inference setup
+  * API integrations: Include in your API request body
 
 --------------------------------------------------------------------------------
 
@@ -360,47 +350,47 @@ MODEL-SPECIFIC NOTES
 --------------------
 
 GPT-4 / GPT-4o / GPT-4 Turbo
-  • Lowest format sensitivity—robust across all formats
-  • Markdown works excellently for reasoning tasks
-  • JSON mode available for strict structured output
+  * Lowest format sensitivity--robust across all formats
+  * Markdown works excellently for reasoning tasks
+  * JSON mode available for strict structured output
 
 GPT-3.5-turbo
-  • Most format-sensitive model (up to 40% performance variation)
-  • Strongly prefer JSON for structured tasks
-  • Explicit instructions matter more than with newer models
+  * Most format-sensitive model (up to 40% performance variation)
+  * Strongly prefer JSON for structured tasks
+  * Explicit instructions matter more than with newer models
 
 O1 / O1-mini / Reasoning Models
-  • Do NOT include "think step by step" instructions
-  • These models reason internally by default
-  • Focus on clear problem specification, not reasoning guidance
+  * Do NOT include "think step by step" instructions
+  * These models reason internally by default
+  * Focus on clear problem specification, not reasoning guidance
 
 Gemini / Gemini Pro
-  • Works well with Markdown and structured formats
-  • Requires format consistency—avoid mixing formats
-  • Good at following explicit format instructions
+  * Works well with Markdown and structured formats
+  * Requires format consistency--avoid mixing formats
+  * Good at following explicit format instructions
 
 Grok
-  • Similar characteristics to GPT-4
-  • Markdown works well for most tasks
-  • Test with your specific use case for best results
+  * Similar characteristics to GPT-4
+  * Markdown works well for most tasks
+  * Test with your specific use case for best results
 
 DeepSeek
-  • V3: Include "JSON" explicitly in prompt for JSON output
-  • R1: CRITICAL—put ALL context in user prompt (not system prompt)
-  • XML works well (trained on Claude-style outputs)
+  * V3: Include "JSON" explicitly in prompt for JSON output
+  * R1: CRITICAL--put ALL context in user prompt (not system prompt)
+  * XML works well (trained on Claude-style outputs)
 
 Llama / Llama 3 / Mistral / Mixtral
-  • More sensitive to format variations than frontier models
-  • Markdown recommended for most tasks
-  • Test your prompt before production use
-  • Explicit, detailed instructions help more than format choice
+  * More sensitive to format variations than frontier models
+  * Markdown recommended for most tasks
+  * Test your prompt before production use
+  * Explicit, detailed instructions help more than format choice
 
 Framework Agnostic (Multi-Model Use)
   If you'll use the prompt across multiple models, use universally robust 
   formats:
-  • Markdown for creative/content tasks
-  • JSON for extraction/structured output
-  • Plain text with explicit instructions for Q&A
+  * Markdown for creative/content tasks
+  * JSON for extraction/structured output
+  * Plain text with explicit instructions for Q&A
 
 ================================================================================
 
@@ -415,7 +405,7 @@ Framework Agnostic (Multi-Model Use)
   Say "Let's go back to Step [number]" or "I want to redo the [section name]".
 
 "The format recommendation doesn't fit my needs"
-  Select option 3 (CUSTOM) during format selection and explain your 
+  Select "Use [format]" during format selection and explain your 
   requirements. The skill will adapt.
 
 "I need to edit the final prompt"
@@ -425,7 +415,7 @@ Framework Agnostic (Multi-Model Use)
 "I want to create a .skill file but don't see the option"
   The Skill format is user-selectable only. Either:
   - Answer "yes" to the skill intent question in Step 1, OR
-  - Type "Use Skill" when prompted for format selection in Step 9
+  - Type "Use Skill" when prompted for format selection in Step 5
   
   Note: The skill will never auto-recommend .skill format.
 
@@ -442,16 +432,16 @@ Framework Agnostic (Multi-Model Use)
 9. FILE STRUCTURE
 -----------------
 
-prompt-architect.skill              <- ZIP archive containing the Claude skill
+prompt-architect.skill                <- ZIP archive containing the Claude skill
   └── prompt-architect/
-      └── SKILL.md                  <- The Claude skill definition
+      └── SKILL.md                    <- The Claude skill definition (9-step)
 
-prompt-architect-universal.md       <- Standalone version for non-Claude LLMs
-                                       (ChatGPT, Gemini, Grok, Llama, etc.)
+prompt-architect-universal.md         <- Standalone version for non-Claude LLMs
+                                         (ChatGPT, Gemini, Grok, Llama, etc.)
 
 prompt-engineering-research-synthesis.md  <- Research basis documentation
 
-README.txt                          <- This file
+README.txt                            <- This file
 
 To inspect or modify the Claude skill:
   1. Rename .skill to .zip (or just unzip directly)
@@ -476,40 +466,40 @@ KEY RESEARCH FINDINGS INCORPORATED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Format Selection Impact:
-  • Format choice can impact performance by up to 40% on specific tasks
-  • XML achieves 23% higher accuracy than JSON for reasoning tasks
-  • Markdown outperforms structured formats by 18% for creative tasks
-  • YAML provides 48% token savings vs JSON with comparable accuracy
+  * Format choice can impact performance by up to 40% on specific tasks
+  * XML achieves 23% higher accuracy than JSON for reasoning tasks
+  * Markdown outperforms structured formats by 18% for creative tasks
+  * YAML provides 48% token savings vs JSON with comparable accuracy
 
 Component Ordering:
-  • Research validates specific ordering: examples → context → role → task → 
-    constraints → style → output format → quality checks
-  • This ordering aligns with LLM token prediction mechanisms
-  • Placing instructions last prevents models from "continuing" the prompt
+  * Research validates specific ordering: examples -> context -> role -> task -> 
+    constraints -> style -> output format -> quality checks
+  * This ordering aligns with LLM token prediction mechanisms
+  * Placing instructions last prevents models from "continuing" the prompt
 
 Optimal Prompt Length:
-  • Background knowledge inclusion improves F1-scores by 5-10%
-  • Short prompts (<50% baseline) universally degrade performance
-  • Staying below 80% context window capacity prevents degradation
+  * Background knowledge inclusion improves F1-scores by 5-10%
+  * Short prompts (<50% baseline) universally degrade performance
+  * Staying below 80% context window capacity prevents degradation
 
 Constraints & Examples:
-  • Compliance degrades beyond 7-10 constraints (skill enforces this limit)
-  • 2-5 examples optimal; quality and ordering matter more than quantity
-  • Strongest example should be placed last in sequence
+  * Compliance degrades beyond 7-10 constraints (skill enforces this limit)
+  * 2-5 examples optimal; quality and ordering matter more than quantity
+  * Strongest example should be placed last in sequence
 
 Personas & Roles:
-  • Simple personas ("You are an expert") show negligible benefit
-  • Detailed, domain-specific personas work better when needed
-  • Role step is now optional based on this research
+  * Simple personas ("You are an expert") show negligible benefit
+  * Detailed, domain-specific personas work better when needed
+  * Role step is now optional based on this research
 
 BENEFITS OF RESEARCH-BASED PROMPTING
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  • Eliminates guesswork with evidence-based format selection
-  • Optimizes for your specific task type and target LLM
-  • Applies proven component ordering for maximum effectiveness
-  • Enforces research-validated constraints and structure limits
-  • Reduces trial-and-error iteration time significantly
+  * Eliminates guesswork with evidence-based format selection
+  * Optimizes for your specific task type and target LLM
+  * Applies proven component ordering for maximum effectiveness
+  * Enforces research-validated constraints and structure limits
+  * Reduces trial-and-error iteration time significantly
 
 For the complete research synthesis, see: prompt-engineering-research-synthesis.md
 
@@ -517,6 +507,15 @@ For the complete research synthesis, see: prompt-engineering-research-synthesis.
 
 11. VERSION HISTORY
 -------------------
+v3.0 (January 2026)
+  - CONSOLIDATED from 15 steps to 9 steps for faster, more streamlined workflow
+  - Combined related steps: Use-Case + Goal + Mode (Step 1), Task + Classification (Step 2)
+  - Output Format + LLM Selection combined into single step (Step 5)
+  - Assembly + Review combined into single step (Step 9)
+  - Simplified Expedite Mode from 3 options (full/assisted/off) to 2 (full/assisted)
+  - Added "Revise" command: "Revise 2: [feedback]" to request revision of specific suggestions
+  - Updated Universal Edition to match 9-step process
+
 v2.3 (January 2026)
   - Added Skill (.skill) output format for creating reusable Claude skills
   - Skill format is user-selectable only (never auto-recommended)
